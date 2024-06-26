@@ -270,7 +270,9 @@ void	pretty_print64()
 		printf("%ld", p[pi].p_align);
 		___br;
 
-		hex_byte((void*)e + p[pi].p_offset, p[pi].p_filesz);
+		if (p[pi].p_flags & PF_X)
+			hex_byte((void*)e + p[pi].p_offset, p[pi].p_filesz);
+
 	}
 	printf("] -------------------------------------------------/\n");
 
@@ -555,7 +557,8 @@ void	pretty_print64()
 				}
 			}
 
-			hex_byte(ss, s[pi].sh_size);
+			if (s[pi].sh_flags & SHF_EXECINSTR)
+				hex_byte(ss, s[pi].sh_size);
 		}
 
 		printf("___________/\\(%04ld)\n", s[pi].sh_offset + s[pi].sh_size);
