@@ -71,7 +71,8 @@ void	hex_byte(void* address, size_t amount)
 		}
 		if (amount > 100)
 			printf("...(%ld)\n", amount);
-		printf("\n");
+		else
+			printf("\n");
 	}
 }
 
