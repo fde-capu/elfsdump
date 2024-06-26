@@ -69,11 +69,10 @@ void	hex_byte(void* address, size_t amount)
 			else
 				printf(".");
 		}
-		if (amount > 100)
-			printf("...(%ld)\n", amount);
-		else
-			printf("\n");
+		printf("\n");
 	}
+	if (amount > 100)
+		printf("...(%ld)\n", amount);
 }
 
 void	byte_is(void* h, long long test, const char* msg)
